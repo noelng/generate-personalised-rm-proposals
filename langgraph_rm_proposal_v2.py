@@ -384,8 +384,11 @@ def save_results_node(state: RMProposalState) -> RMProposalState:
     company_name = state['company_name']
     analysis = state['analysis']
     web_results = state['web_results']
-    
-    filename = f"{company_name.replace(' ', '_')}_eligibility_analysis.txt"
+
+    output_dir = "C:/Users/noeln/OneDrive/Desktop/Agentic RAG/generate-personalised-rm-proposals/2. output"  # or an absolute path like "C:/Users/Noel/Documents/BankReports"
+    os.makedirs(output_dir, exist_ok=True)  # ensures the directory exists
+    filename = os.path.join(output_dir, f"{company_name.replace(' ', '_')}_eligibility_analysis.txt")
+    # filename = f"{company_name.replace(' ', '_')}_eligibility_analysis.txt"
     
     try:
         with open(filename, "w", encoding="utf-8") as f:
